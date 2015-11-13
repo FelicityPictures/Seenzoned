@@ -11,5 +11,5 @@ try:
     messages.close()
     print('done')
 except:
-    print('oh no :(')
+    print('Something went wrong! :(')
     sys.exit(0)
