@@ -1,6 +1,7 @@
 import urllib2,json
 from flask import Flask, render_template
 from websocket import create_connection
+import markov
 
 app = Flask(__name__)
 token="xoxb-14526704643-twywi1tueSBhidtlaLb3sR0M"
@@ -30,20 +31,28 @@ def directMessage(username):
     if userid == 0:
         print("Not Found")
     else:
-        url="https://slack.com/api/users.list?token=%s"
-        url=url%(token)
+        url="https://slack.com/api/im.open?token=%s?user=%s"
+        url=url%(token, userid)
         request = urllib2.urlopen(url)
         result = request.read()
         r = json.loads(result)
 
+def directMessageUID(userid):
+    url="https://slack.com/api/im.open?token=%s?user=%s"
+    url=url%(token, userid)
+    request = urllib2.urlopen(url)
+    result = request.read()
+    r = json.loads(result)
 
-def recieve():
+
+def receive():
     ws = create_connection(connect())
     while True:
         result = ws.recv()
         r = json.loads(result)
+        msg = markov.get_sentence()
         if r["type"] == "message" and r["channel"] == "G0E1ERJUB" and "user" in r:
-            message(r["channel"], "hi")
+            message(r["channel"], msg)
         print r
 
 def message(channel, text):
@@ -52,4 +61,4 @@ def message(channel, text):
     request = urllib2.urlopen(url)
 
 if __name__ == "__main__":
-    recieve()
+    receive()
