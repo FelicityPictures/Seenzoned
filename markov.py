@@ -19,22 +19,29 @@ for i in f:
         else:
             markov[words[-2], words[-1]] = ['.']
 
-sentence = []
+def get_sentence(markov=markov):
+    """
+    get_sentence: A short description
 
-key = list(random.choice(markov.keys()))
+    Args:
+    dict: markov dictionary used
+    """
+    sentence = []
 
-while key[0][0].islower(): # makes sure it starts on a capital string
     key = list(random.choice(markov.keys()))
 
-value = random.choice(markov[key[0], key[1]])
+    while key[0][0].islower(): # makes sure it starts on a capital string
+        key = list(random.choice(markov.keys()))
 
-sentence += key
-sentence.append(value)
-
-while (key[0], key[1]) in markov and value[-1] not in END_OF_SENTENCE_CHARS:
-    key[0] = key[1]
-    key[1] = value
     value = random.choice(markov[key[0], key[1]])
+
+    sentence += key
     sentence.append(value)
 
-print " ".join(sentence)
+    while (key[0], key[1]) in markov and value[-1] not in END_OF_SENTENCE_CHARS:
+        key[0] = key[1]
+        key[1] = value
+        value = random.choice(markov[key[0], key[1]])
+        sentence.append(value)
+
+    return " ".join(sentence)
