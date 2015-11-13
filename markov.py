@@ -2,24 +2,27 @@ import random
 
 END_OF_SENTENCE_CHARS = ['.', '?', '!']
 
-f = open("fellowship.txt", 'r').read().split('\n')
+def init():
 
-markov = {}
+    f = open("fellowship.txt", 'r').read().split('\n')
 
-for i in f:
-    words = i.split()
-    if len(words) > 2:
-        for j in range(0, len(words) - 2):
-            if (words[j], words[j+1]) in markov:
-                markov[words[j], words[j+1]].append(words[j+2])
+    markov = {}
+
+    for i in f:
+        words = i.split()
+        if len(words) > 2:
+            for j in range(0, len(words) - 2):
+                if (words[j], words[j+1]) in markov:
+                    markov[words[j], words[j+1]].append(words[j+2])
+                else:
+                    markov[words[j], words[j+1]] = [words[j+2]]
+            if (words[-2], words[-1]) in markov:
+                markov[words[-2], words[-1]].append('.')
             else:
-                markov[words[j], words[j+1]] = [words[j+2]]
-        if (words[-2], words[-1]) in markov:
-            markov[words[-2], words[-1]].append('.')
-        else:
-            markov[words[-2], words[-1]] = ['.']
+                markov[words[-2], words[-1]] = ['.']
+    return markov
 
-def get_sentence(markov=markov):
+def get_sentence(markov):
     """
     get_sentence: A short description
 

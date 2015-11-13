@@ -1,4 +1,4 @@
-import urllib2,json
+import requests, json
 from flask import Flask, render_template
 from websocket import create_connection
 import markov
@@ -7,19 +7,15 @@ app = Flask(__name__)
 token="xoxb-14526704643-twywi1tueSBhidtlaLb3sR0M"
 
 def connect():
-    url="https://slack.com/api/rtm.start?token=%s"
-    url=url%(token)
-    request = urllib2.urlopen(url)
-    result = request.read()
-    r = json.loads(result)
+    results = requests.get("https://slack.com/api/rtm.start",
+              params={'token': token})
+    r = results.json()
     return r["url"]
 
 def userid(username):
-    url="https://slack.com/api/users.list?token=%s"
-    url=url%(token)
-    request = urllib2.urlopen(url)
-    result = request.read()
-    r = json.loads(result)
+    results = requests.get("https://slack.com/api/users.list",
+              params={'token': token})
+    r = results.json()
     for member in (r["members"]):
         if "real_name" in member:
             if username == member["real_name"]:
@@ -31,34 +27,35 @@ def directMessage(username):
     if userid == 0:
         print("Not Found")
     else:
-        url="https://slack.com/api/im.open?token=%s?user=%s"
-        url=url%(token, userid)
-        request = urllib2.urlopen(url)
-        result = request.read()
-        r = json.loads(result)
+        results = requests.get("https://slack.com/api/im.open",
+                  params={'token': token, 'user': userid})
+        r = results.json()
+        return r["channel"]["id"]
 
 def directMessageUID(userid):
-    url="https://slack.com/api/im.open?token=%s?user=%s"
-    url=url%(token, userid)
-    request = urllib2.urlopen(url)
-    result = request.read()
-    r = json.loads(result)
+    results = requests.get("https://slack.com/api/im.open",
+              params={'token': token, 'user': userid})
+    r = results.json()
+    return r["channel"]["id"]
 
 
 def receive():
     ws = create_connection(connect())
     while True:
-        result = ws.recv()
-        r = json.loads(result)
-        msg = markov.get_sentence()
-        if r["type"] == "message" and r["channel"] == "G0E1ERJUB" and "user" in r:
-            message(r["channel"], msg)
+        results = ws.recv()
+        r = json.loads(results)
         print r
+        msg = markov.get_sentence(markov.init())
+        if r["type"] == "message" and "user" in r:
+            if r["text"].lower() == "speak to me":
+                channel = directMessageUID(r["user"])
+                message(channel, "Hello")
+            else:
+                message(r["channel"], str(msg))
 
 def message(channel, text):
-    url="https://slack.com/api/chat.postMessage?token=%s&channel=%s&text=%s&username=MarkovBot"
-    url=url%(token, channel, text)
-    request = urllib2.urlopen(url)
+    results = requests.get("https://slack.com/api/chat.postMessage",
+              params={'token': token, 'channel': channel, 'text': text, 'username': "MarkovBot"})
 
 if __name__ == "__main__":
     receive()
