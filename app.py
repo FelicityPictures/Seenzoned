@@ -18,19 +18,16 @@ def userid(username):
     r = results.json()
     for member in (r["members"]):
         if "real_name" in member:
-            if username == member["real_name"]:
+            if username == member["real_name"].lower():
                 return(member["id"])
     return 0
 
 def directMessage(username):
-    userid = userid(username)
-    if userid == 0:
-        print("Not Found")
+    id = userid(username)
+    if id == 0:
+        return 0
     else:
-        results = requests.get("https://slack.com/api/im.open",
-                  params={'token': token, 'user': userid})
-        r = results.json()
-        return r["channel"]["id"]
+        return directMessageUID(id)
 
 def directMessageUID(userid):
     results = requests.get("https://slack.com/api/im.open",
@@ -47,8 +44,13 @@ def receive():
         print r
         msg = markov.get_sentence(markov.init())
         if r["type"] == "message" and "user" in r:
-            if r["text"].lower() == "speak to me":
+            if r["text"].lower() == "//markov speak to me":
                 channel = directMessageUID(r["user"])
+                message(channel, "Hello")
+            elif (r["text"].lower())[:18] == "//markov speak to ":
+                channel = directMessage((r["text"].lower())[18:])
+                if channel == 0:
+                    message(r["channel"], "User not Found")
                 message(channel, "Hello")
             else:
                 message(r["channel"], str(msg))
