@@ -2,8 +2,7 @@ import requests
 import json
 from websocket import create_connection
 
-#change this for different channels
-CHANNEL_NAME = 'random'
+CHANNEL_NAME = raw_input('Enter channel name: ')
 
 FILENAME = CHANNEL_NAME + '_history.txt'
 BASE_URL = "https://slack.com/api/"
@@ -16,14 +15,14 @@ def connect():
 	'''
 	See app.py because I just copied this from there
 	'''
+	global WS
 	results = requests.get(BASE_URL + "rtm.start",
 							params={'token': TOKEN})
 	r = results.json()
-	print r
-	print BASE_URL + "rtm.start?token=" + TOKEN
 	WS = create_connection(r['url'])
 
-def get_channel_id(CHANNEL_NAME):
+def get_channel_id():
+	global CHANNEL_ID
 	results = requests.get(BASE_URL + "channels.list",
 							params={'token': TOKEN})
 	r = results.json()
@@ -38,29 +37,24 @@ def grab_history():
 	See app.py for comments (duplicate code)
 	'''
 	print 'Creating ' + FILENAME
-	messages = open(filename, 'w')
-
-	results = WS.recv()
-	r = json.loads(results)
-	print r
-
+	messages = open(FILENAME, 'w')
+	
 	results = requests.get(BASE_URL + "channels.history",
 							params={'token': TOKEN,
 									'channel': CHANNEL_ID,
 									'inclusive': 1,
 									'count': 1000})
 	r = results.json()
-
 	for item in r['messages']:
 		if item['type'] == 'message':
-			messages.write(item['text'] + '\n')
-
+			messages.write(item['text'].encode('utf8') + '\n')
+	
 	messages.close()
-	print 'done'
+	print 'Done.'
 
 def main():
 	connect()
-	get_channel_id("random")
+	get_channel_id()
 	grab_history()
 
 main()

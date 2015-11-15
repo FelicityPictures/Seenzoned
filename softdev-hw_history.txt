@@ -1,0 +1,22 @@
+<@U0AFG4PC5|songdavid98> has joined the channel
+<!channel>: For the api mini project: <https://www.quackpad.io/pad/5640944724e2fc000338a2bf>
+<@U0AF47NUQ|tonyli7> has joined the channel
+<@U0AFK868H|hoyinho> has joined the channel
+<!channel>: This is for Friday 11/6 since I won't be in school.
+
+Form a small group (2-4 people). Each group should find some API online. Some suggestions (and places to look):
+
+
+NYC Data Mine
+Flickr
+tumblr
+NY Times
+openweathermap
+Search on Socrata or programmableweb
+
+Write a small flask app that does something fun or cool.
+
+I gave a couple of examples in class.
+
+You won't finish this on Friday - continue it as a project that will be due mid to late next week. You should use github and branches. I'll put up a quackpad for you to "register" the repo addresses next week.
+<@U0AGKDDK8|sandyf> has joined the channel
