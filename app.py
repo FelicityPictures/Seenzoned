@@ -10,8 +10,9 @@ from websocket import create_connection
 import markov
 
 app = Flask(__name__)
-token = "xoxb-14526704643-twywi1tueSBhidtlaLb3sR0M" #token for markovbot in stuycs slack
-
+f = open("token.txt", "r")
+TOKEN = f.readline()[:-1] #TOKEN for markovbot in stuycs slack
+f.close()
 
 def connect():
     """
@@ -23,8 +24,8 @@ def connect():
         A websocket url that is connected to in the receive() method.
     """
 
-    results = requests.get("https://slack.com/api/rtm.start",  #connects to rtm.start with token
-                           params={'token': token})  #results sent back by slack api.
+    results = requests.get("https://slack.com/api/rtm.start",  #connects to rtm.start with TOKEN
+                           params={'token': TOKEN})  #results sent back by slack api.
     r = results.json()  #results placed in json format
     return r["url"]  #websocket url from results
 
@@ -45,8 +46,8 @@ def userid(username):
         0 if username does not exist
     """
 
-    results = requests.get("https://slack.com/api/users.list",  #connects to users.list with token
-                           params={'token': token})  #results sent back by slack api
+    results = requests.get("https://slack.com/api/users.list",  #connects to users.list with TOKEN
+                           params={'token': TOKEN})  #results sent back by slack api
     r = results.json()  #results placed in json form
     for member in (r["members"]):  #loops through list of members
         if "real_name" in member:  #checks if real name is defined
@@ -64,8 +65,8 @@ def username(userid):
     Returns:
         username associated with the userid
     """
-    results = requests.get("https://slack.com/api/users.list",  #connects to users.list with token
-                           params={'token': token})  #results sent back by slack api
+    results = requests.get("https://slack.com/api/users.list",  #connects to users.list with TOKEN
+                           params={'token': TOKEN})  #results sent back by slack api
     r = results.json()  #results placed in json form
     for member in (r["members"]):  #loops through list of members
         if "real_name" in member:  #checks if real name is defined
@@ -106,8 +107,8 @@ def directMessageUID(userid):
     Returns:
         Returns the direct message channel id
     """
-    results = requests.get("https://slack.com/api/im.open",  # connects to im.open with token and userid
-                           params={'token': token, 'user': userid})
+    results = requests.get("https://slack.com/api/im.open",  # connects to im.open with TOKEN and userid
+                           params={'token': TOKEN, 'user': userid})
     r = results.json()
     return r["channel"]["id"]  # returns channel id
 
@@ -149,8 +150,8 @@ def message(channel, text):
         text: the message to be sent
     """
 
-    results = requests.get("https://slack.com/api/chat.postMessage", #connects to chat.postMessage with token, channel, text, username
-                           params={'token': token, 'channel': channel, 'text': text, 'username': "MarkovBot"})
+    results = requests.get("https://slack.com/api/chat.postMessage", #connects to chat.postMessage with TOKEN, channel, text, username
+                           params={'token': TOKEN, 'channel': channel, 'text': text, 'username': "MarkovBot"})
 
 if __name__ == "__main__":
     receive() #runs main loop
