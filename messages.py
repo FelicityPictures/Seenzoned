@@ -1,24 +1,66 @@
-import urllib2, json, sys
+import requests
+import json
+from websocket import create_connection
 
-url = 'https://slack.com/api/channels.history'
-client_id = open('token.txt','r').read()
-filename = 'history.txt'
-channel = ''
+#change this for different channels
+CHANNEL_NAME = 'random'
 
-grab_history():
+FILENAME = CHANNEL_NAME + '_history.txt'
+BASE_URL = "https://slack.com/api/"
+TOKEN = open('token.txt','r').read()
+
+WS = None
+CHANNEL_ID = -1
+
+def connect():
+	'''
+	See app.py because I just copied this from there
+	'''
+	results = requests.get(BASE_URL + "rtm.start",
+							params={'token': TOKEN})
+	r = results.json()
+	print r
+	print TOKEN
+	WS = create_connection(r['url'])
+
+def get_channel_id(CHANNEL_NAME):
+	results = requests.get(BASE_URL + "channels.list",
+							params={'token': TOKEN})
+	r = results.json()
+	for channel in r['channels']:
+		if channel['name'] == CHANNEL_NAME:
+			CHANNEL_ID = channel['id']
+
+def grab_history():
 	'''
 	Grabs history from a certain Slack channel
-	and stores it in filename
+	and stores it in filename.
+	See app.py for comments (duplicate code)
 	'''
-	#try:
-	#    messages = open(msg,'w')
-	#    print('creating')
-	#    messages.close()
-	#    print('done')
-	#except:
-	#    print('Something went wrong! :(')
-	#    sys.exit(0)
+	print 'Creating ' + filename
 	messages = open(filename, 'w')
-	print 'creating ' + filename
+	
+	results = WS.recv()
+	r = json.loads(results)
+	print r
+	
+	results = requests.get(BASE_URL + "channels.history",
+							params={'token': TOKEN,
+									'channel': CHANNEL_ID,
+									'inclusive': 1,
+									'count': 1000})
+	r = results.json()
+	
+	for item in r['messages']:
+		if item['type'] == 'message':
+			messages.write(item['text'] + '\n')
+	
 	messages.close()
 	print 'done'
+
+def main():
+	connect()
+	get_channel_id()
+	grab_history()
+
+main()
