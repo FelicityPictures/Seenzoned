@@ -1,17 +1,23 @@
 """
-Roy Xu
+Roy Xu, Yicheng Wang
 Main file for exchange of information between bot and slack api
 """
 
 import requests
 import json
-from flask import Flask, render_template
 from websocket import create_connection
 import markov
+from sys import argv
+from messages import *
 
-app = Flask(__name__)
 token = "xoxb-14526704643-twywi1tueSBhidtlaLb3sR0M" #token for markovbot in stuycs slack
-
+DEBUG = False
+HELP_STR = """Commands:
+//markov: markov bot will talk like how people talk in this channel
+//markov speak like <channel>: markovBot will speak like a channel if possible, or speak like softdev
+//markov speak to me: markovBot will message you
+//markov speak to <name>: markovBot will message the person with specificed name
+//markov help or //markov <invalid command>: markovBot will print this string"""
 
 def connect():
     """
@@ -123,22 +129,83 @@ def receive():
     while True: #continuous loop
         results = ws.recv() #receive results from websocket
         r = json.loads(results)
-        print r #logs events in console
-        msg = markov.get_sentence(markov.init()) #pulls sentences from markov.py
-        if r["type"] == "message" and "user" in r: #checks if event is message and is not from a bot
-            if r["text"].lower() == "//markov speak to me": #checks if message is a command to markovbot
-                channel = directMessageUID(r["user"]) #direct messages user"
-                message(channel, "Hello")
-            elif (r["text"].lower())[:18] == "//markov speak to ": #checks if message is a command to markovbot
-                channel = directMessage((r["text"].lower())[18:]) #direct messages the user markovbot is told to message
-                if channel == 0: #checks if user exists
-                    message(r["channel"], "User not Found")
-                else:
-                    msg = "Hello, %s sent me" % (username(r["user"])) #sends Hello and whoever sent command to target of command
-                    message(channel, msg)
-            else:
-                message(r["channel"], str(msg)) #otherwise send a response to channel
+        if DEBUG:
+            print r #logs events in console
 
+        if "channel" in r:
+            markov_dict = get_proper_dict(r["channel"])
+
+        if r["type"] == "message" and "user" in r: #checks if event is message and is not from a bot
+            if (r['text'].lower().startswith("//markov")):
+                command = r['text'][len('//markov')+1:]
+                if command == "":
+                    msg = markov.get_sentence(markov_dict) #pulls sentences from markov.py
+                    message(r["channel"], msg) #otherwise send a response to channel
+
+                elif command == "speak to me": #checks if message is a command to markovbot
+                    channel = directMessageUID(r["user"]) #direct messages user"
+                    message(channel, "Hello")
+
+                elif (command.startswith("speak to ")): #checks if message is a command to markovbot
+                    channel = directMessage((r["text"].lower())[18:]) #direct messages the user markovbot is told to message
+                    if channel == 0: #checks if user exists
+                        message(r["channel"], "User not Found")
+                    else:
+                        msg = "Hello, %s sent me" % (username(r["user"])) #sends Hello and whoever sent command to target of command
+                        message(channel, msg)
+
+                elif "speak like" in command:
+                    begin_index = r["text"].find("speak like") + len("speak like ")
+                    desired_channel = r["text"][begin_index:]
+                    desired_id = get_channel_id(False, desired_channel)
+                    markov_dict = get_proper_dict(desired_id)
+                    msg = markov.get_sentence(markov_dict) #pulls sentences from markov.py
+                    message(r["channel"], msg)
+
+                else:
+                    message(r["channel"], HELP_STR)
+
+def get_proper_dict(channel_id):
+    """
+    get_proper_dict: returns a proper markov dictionary based on channel name
+
+    Args:
+        channel_id (string): id of the channel
+    
+    Returns:
+        a markov dictionary based on the channel name or based on
+        softdev_history if unsuccessful
+
+    Comment:
+        FIXME this is extremely duct tape
+    """
+
+    try:
+        markov_dict = markov.get_dictionary("history/" + channel_id + '_history.txt')
+    except IOError, FileNotFoundError: # if we don't have history for it
+        try:
+            grab_history(channel_id, False)
+            markov_dict = markov.get_dictionary("history/" + channel_id + '_history.txt')
+        except:
+            # default = softdev channel
+            markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
+
+    except:
+        # default = softdev channel
+        markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
+
+    if markov_dict == {}: # maybe its private
+        try:
+            grab_history(channel_id, True)
+            markov_dict = markov.get_dictionary("history/" + channel_id + '_history.txt')
+        except:
+            # default = softdev channel
+            markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
+
+        if markov_dict == {}: # idk what happened
+            markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
+       
+    return markov_dict
 
 def message(channel, text):
     """
@@ -153,4 +220,7 @@ def message(channel, text):
                            params={'token': token, 'channel': channel, 'text': text, 'username': "MarkovBot"})
 
 if __name__ == "__main__":
+    if "-d" in argv:
+        DEBUG = True
+    grab_history(get_channel_id(False, "softdev"), False)
     receive() #runs main loop
