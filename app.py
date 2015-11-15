@@ -187,9 +187,19 @@ def get_proper_dict(channel_id):
         markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
         print "using default"
 
-    if markov_dict == {}:
-        markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
-        print "using default because empty dictionary"
+    if markov_dict == {}: # maybe its private
+        try:
+            grab_history(channel_id, True)
+            markov_dict = markov.get_dictionary("history/" + channel_id + '_history.txt')
+            print "new file generated!"
+        except:
+            # default = softdev channel
+            markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
+            print "using default"
+
+        if markov_dict == {}: # idk what happened
+            markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
+            print "using default because empty dictionary"
        
     return markov_dict
 
