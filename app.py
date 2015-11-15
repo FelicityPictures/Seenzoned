@@ -1,6 +1,7 @@
 """
 Roy Xu
 Main file for exchange of information between bot and slack api
+Currently restricted to Markov-Bot-Testing Channel (Line 131)
 """
 
 import requests
@@ -126,7 +127,7 @@ def receive():
         r = json.loads(results)
         print r #logs events in console
         msg = markov.get_sentence(markov.init()) #pulls sentences from markov.py
-        if r["type"] == "message" and "user" in r: #checks if event is message and is not from a bot
+        if r["type"] == "message" and "user" in r and r["channel"] == "G0EHEV69G": #checks if event is message and is not from a bot plus restriction to only one channel
             if r["text"].lower() == "//markov speak to me": #checks if message is a command to markovbot
                 channel = directMessageUID(r["user"]) #direct messages user"
                 message(channel, "Hello")
