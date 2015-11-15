@@ -60,8 +60,8 @@ def grab_history():
 			p = re.compile('(<!)')
 			s = p.sub('@', s)
 			# <@USER_ID
-			p = re.compile('(<@[a-zA-z0-9]{9}\|*)')
-			s = p.sub('', s)
+			p = re.compile('(<@[a-zA-z0-9]{9}\|)')
+			s = p.sub('@', s)
 			# remaining <>
 			p = re.compile('([<>])')
 			s = p.sub('', s)
