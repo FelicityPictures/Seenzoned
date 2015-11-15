@@ -1,5 +1,5 @@
 """
-Roy Xu
+Roy Xu, Yicheng Wang
 Main file for exchange of information between bot and slack api
 """
 
@@ -166,40 +166,36 @@ def get_proper_dict(channel_id):
     
     Returns:
         a markov dictionary based on the channel name or based on
-        softdev_history if unsuccessful    
+        softdev_history if unsuccessful
+
+    Comment:
+        FIXME this is extremely duct tape
     """
 
     try:
         markov_dict = markov.get_dictionary("history/" + channel_id + '_history.txt')
-        print "file found!"
     except IOError, FileNotFoundError: # if we don't have history for it
         try:
             grab_history(channel_id, False)
             markov_dict = markov.get_dictionary("history/" + channel_id + '_history.txt')
-            print "file generated!"
         except:
             # default = softdev channel
             markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
-            print "using default"
 
     except:
         # default = softdev channel
         markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
-        print "using default"
 
     if markov_dict == {}: # maybe its private
         try:
             grab_history(channel_id, True)
             markov_dict = markov.get_dictionary("history/" + channel_id + '_history.txt')
-            print "new file generated!"
         except:
             # default = softdev channel
             markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
-            print "using default"
 
         if markov_dict == {}: # idk what happened
             markov_dict = markov.get_dictionary("history/C0ADBSKC4_history.txt")
-            print "using default because empty dictionary"
        
     return markov_dict
 
