@@ -1,0 +1,211 @@
+@U0AGP4JMA
+We'll talk about this tomorrow in class
+Any good books/guides on python, specifically the stylistic end? Curious about what exactly is the “python way”. Preferably not geared towards beginners
+@channel: CSTUY, which, coincidentally, is my non-profit is hosting its first hackathon of the year, def hacks("Winter",2015) on December 12th.
+
+You're welcome to attend either as a participant or a mentor (last year, many softdev students acted as mentors to beginners from other schools and it worked out great).
+
+More info can be found here: http://defhacks.com
+
+If you want to sign up as a mentor, just email me. If you want to sign up as a participant, follow the instructions on the page. It's going to be held in Manhattan at Facebook's NY Office (a little south of Union Square).
+@channel: remember - api project is due on Monday but we'll have lessons Thursday and Friday
+@U0AFA8YBG: explain
+@U08PSCRAT: Can we add other stuy students who want to self study softdev material?
+Hi guys! I know this is late but is there any groups in PD 6 that have less than 4 ppl so i can join? Been trying to ask people directly but everyone’s groups are full. I’m free all night and can do whatever u need me to. Please let me know asap!!
+Btw my name is Shawn
+Hello friends. I'm bad so I didn't join a group in time, can anyone in Period 7 let me into their group? My specialty is HTML/CSS/JQuery/Bootstrap which may or may not be useful in this project but I can still work on other stuff!
+@channel: Sacha Chua does a lot of stuff in the emacs community - she's been doing blog posts with upates on emacs related news and packages. If you're using emacs, you might want to follow her blog: http://sachachua.com/blog/2015/11/2015-11-02-emacs-news/
+@channel: If you haven't done so already you should all sign up for your github student developer pack.
+http://149.89.150.100:8080/
+Also, that is a mortal sin, you have been excommunicated from the church of CS 
+*ahem* kill/yank 
+Level -1. Incompetence.
+
+You've done something horribly wrong. Emacs is apparently installed but crashes sporadically and won't let you use copy and paste. You suspect this is a sign. You go back to programming in the Github website.
+@channel: Worth a look: http://blog.vivekhaldar.com/post/3996068979/the-levels-of-emacs-proficiency
+The mongo server needs to be running
+i feel like I'm making this more complicated than it needs to be, lol. sry
+"could not connect to server"
+yea, I'm not connected to mongo
+test mongo to make sure the mongo server is running and you can connect to its instance
+did mongodb install correctly?
+the config isn't working
+i can take a look at it
+sure
+@channel:  Any of you Linux folk want to see if we can get http://zulip.org|zulip.org installed?
+`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+tl; dr
+It lets you install all sorts of useful packages.
+Okay, you're going to need to install Homebrew. http://brew.sh
+brew is not a recognized command :disappointed:
+that will start the mongo daemon
+then do `mongod --config /usr/local/etc/mongod.conf`
+just in a terminal
+no
+in the virtualenv or no?
+`brew install mongodb`
+do
+yes
+oh wait do i need to install Mongo too?
+but i installed pymongo...?
+Mongo isn't running on your computer
+@davidrothblatt commented on @davidrothblatt's file https://stuycs.slack.com/files/davidrothblatt/F0DK6BWQL/screen_shot_2015-11-01_at_3.04.33_pm.png|Screen Shot 2015-11-01 at 3.04.33 PM.png: Btw, this worked on the computers in the classroom. 
+@davidrothblatt uploaded a file: https://stuycs.slack.com/files/davidrothblatt/F0DK6BWQL/screen_shot_2015-11-01_at_3.04.33_pm.png|Screen Shot 2015-11-01 at 3.04.33 PM.png and commented: Hi guys. Having trouble testing our code through the terminal. I'm in the virtualenv and already installed pymongo, but i keep getting errors like this. Any ideas? 
+@channel: remember to bring in a printed out copy of your "code review" tomorrow. Make sure to include your group member names as well as the other group member names and both project repo links.
+
+Also email the review to the other group (or dm)
+@channel: If you are having trouble doing the create-a-branch thing, check the file .gitconfig in your home directory - if it says under the [push] section "default = matching" change it to "default = simple"
+more to come in a few days
+@U08PSCRAT: thxs a lot! 
+@channel:  some emacs notes (I'll probably write up more over time): http://cestlaz.github.io/2015/10/29/emacs-intermediate.html#.VjFhU98Sr0o
+Optimal lab days: 5
+Optimal due date: Nov. 7
+- Basic jinja template reconfiguration
+-Need to combine the database files into one mongodb file
+Bloginator update:
+@U08PSCRAT: bloginator update:
+-Majority of utils.py refactored for MongoDB
+-Still need to fix utils.py and refactor login.py
+
+Optimal due date: mid-next-week, after early college apps.
+Optimal lab days: 3.
+:thumbsup:
+"Some time next week" lol
+@U08PSCRAT: bloginator update:
+Refactored 3 functions to work with mongo, still need to test
+
+Optimal Due Date: Some time next week
+Optimal Lab Days: 2-3
+yo tuesday we dont have school
+@U08PSCRAT: travlr blog update
+- block.html was created to implement inheritance
+- nav. bar was also implemented
+- some styling fixes to be done soon
+- SQL needs to be converted to Mongo
+
+preferred due date: Tuesday. Nov. 3rd
+preferred lab days: 3
+@U08PSCRAT: DopeSQL update
+- template inheritance finished 
+- nav bar created to streamline site
+- starting conversion to mongo
+
+Optimal Due Date: November 4
+Optimal Lab Days: 3
+@U08PSCRAT: bloginator-softdev update
+template inheritance finished but not tested
+re-written a few functions but not tested
+@U08PSCRAT: bloginator update
+functions - moved all but one to mongo (need to test / bugfix  a few)
+jinja inheritance is still being worked on
+
+Optimal Due Date: November 4 (Next Wed)
+Optimal Lab Days: 2
+@U08PSCRAT: blag update functions -- adapting python to mongo
+finished jinja inheritance but still need to test
+
+Optimal Due Date: Next Thursday (Nov. 5)
+Optimal Lab Days: 1 or 2
+@U08PSCRAT: Bloginator update
+Currently moving to mongo
+Started template inheritance
+Optimal Due Date: November 5
+Optimal Lab Days: 3
+@U08PSCRAT: 
+functions - sqlite code moved to pymongo 
+having trouble testing due to issues with installing pymongo (will post about this after everyone writes their points/ will ask on fb group)
+
+Optimal Due Date: Next Wednesday (Nov. 4) - wanted tues but there's no school
+Optimal Lab Days: 1 or 2
+@U08PSCRAT: Donaldify update
+Completed some mongo conversions of database 
+Working on html refactoring 
+Optimal Due Date: Next Thursday(November 5th)
+Optimal Lab Days: 3
+@U08PSCRAT: bloginator update / HTML already factored / currently working on converting to Mongo / preferred due date: Wednesday Nov. 4 / lab days: 2
+@U08PSCRAT:  bloginator update:
+Databases converted to Mongo
+Currently working on converting SQLite code to Mongo
+Yet to begin work on template inheritance and frontend
+Optimal Due Date: Next Thursday (November 5th)
+Optimal Lab Days: 3
+@U08PSCRAT:  1.62X10ToThe11 update:
+Converting  the SQLite code to Mongo almost finished.
+Still need to finish template inheritance and CSS.
+
+Optimal Due Date: Next Wednesday (November 4th)
+Optimal Lab Days: 2
+@U08PSCRAT: ProjectBlogMe Update
+We have completed implementation of Template Inheritance and have started to refactor database management, i.e moving to Mongo.
+We hope to soon complete the rest of the implementation of Mongo and changes to the Middle Ware accordingly, as well as refactoring HTML.
+Optimal Due Date: Next Wednesday (November 4th)
+Optimal # of Lab Days: 2
+@U08PSCRAT: Bloginator-revamped
+
+Added functional methods for editing and deleting existing posts.
+Linked HTML templates with python backend.
+Secured backend checks and improving to semi-professional standards
+Converted SQL to Mongo, as well as operative efficiency
+
+Considering changing/adding CSS templates using bootstrap
+
+Optimal lab days: 3
+Optimal due date: Next Wednesday (November 4th)
+@U08PSCRAT: Bloginator9000 update:
+The template inheritance is almost complete. need optimization
+We need to continue working on converting the SQLite code to Mongo.
+Considering changing some of CSS.
+
+Optimal due date: Next Wednesday (November 4th)
+Optimal labdays: 3
+@U08PSCRAT: Untitled update:
+
+Template inheritance was already implemented. We are currently working on converting to Mongo.
+If time allows it, we plan to make the website more aesthetically pleasing.
+
+Optimal due date: Next Thursday (November 5th)
+Optimal labdays: 3
+Optimal labdays: 2
+Optimal due day: This monday (November 2nd)
+We now need to iron out bugs in the mongo code and straighten out some of the route calls
+Converted sqlite code to mongo code
+Converted html to use templating, significant improvement in organization
+@U08PSCRAT: Blogginator update
+@U08PSCRAT: : blog-project update
+Still converting backend to mongo and frontend is still lacking
+Optimal Due Date Next Thursday
+Optimal labdays:3
+@U08PSCRAT: blog-project update
+We have converted to Mongo and plan on reworking the CSS and HTML next. 
+Optimal due date: Next Tuesday (November 3rd)
+Optimal labdays: 2
+@U08PSCRAT:  blag-softdev update:
+
+We have implemented template inheritance and are almost done converting to Mongo.
+The html was pretty simple. There's not much we can do to improve efficiency. 
+Posts and users are all done and only comments are still using SQL. 
+
+Optimal due date: Next Wednesday (November 4th)
+Optimal labdays: 3
+@U08PSCRAT: bloginatorCJFM update:
+
+All we've really done so far is refactoring the HTML templates. The CSS in each file is pretty redundant and pretty confusing tbh. 
+The SQLite code also goes through CSV, which works but is inefficient, so we might have to streamline a lot.
+Hopefully once we finish that, we can start converting to Mongo? 
+
+Optimal due date: Next Thursday (Nov 5) (EA/ED deadlines pls)
+Optimal labdays: 3
+@U08PSCRAT:  dopeSQL update:
+
+We're working on refactoring the SQLite code but it's taking longer than expected because the code originally made use of locally stored DB files (and directory searches for ".db") but MongoDB saves all of its files non-locally and we're still not sure how to work around that. 
+
+HTML looks pretty good, but we have a few more updates planned for it, the original group's HTML was really well organized (apparently made use of a master file that each html file extended).
+
+Optimal duedate: Next Monday (Nov 2)
+Optimal labdays: 3
+Minutes into project: 20
+Annoyance at original group: Steadily rising
+MEAN development ftw
+@U0AGP4JMA: day 1, we saw a presentation by Amanda's group. There project had their own CSS and limited their character numbers. We didn't discuss much about their presentation but rather, Z went over how to "extend" templates so that you don't need to copy past code as well as blocks using Jinja. (Check the classcode) An advantage is that it's more concise. However, you may not want this all the time as some pages are just too different / has too many small changes for it to be useful. 
+@U0AGP4JMA:  I don't know about Day1 because I was absent too but today we had Krzysztof's group present and then Z began teaching about the art of presenting properly. He basically said to not hog the spotlight, avoid saying "I", and don't direct/command people during the presentation because it gives off a "lone wolf" vibe. After that we started the very basics of NoSQL (which is apparently a misnomer) and we will be using MongoDB for it, but we didn't start covering the details
+@channel: hey guys I've been out the last two days. can someone fill me in on what i missed please?

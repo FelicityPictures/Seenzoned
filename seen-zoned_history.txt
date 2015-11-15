@@ -1,0 +1,427 @@
+strange
+oh
+no like i keep seeing it come online and then logging out immediately
+on the markov end or your end o_O
+it crashes?
+what do you mean
+why does markovbot keep dying
+thats a pretty nice proect
+: lol
+wtf LOOOL
+https://github.com/alex-wyc/APCSFinalProect/graphs/code-frequency
+notice anything strange? https://github.com/alex-wyc/APCSFinalProect/graphs/contributors
+that reminds me
+OH LOL
+beef it up
+because the text files
+yes
+i think you're okay
+:expressionless:
+well once you send the pull request
+-
+I think I ust feel like I should be doing more stuff because it looks like I've done zero lines of code in the graphs -___
+yeah it's not a big deal
+deal
+LOL okay probably not a big dela
+I give up screw this
+it'll look the same as the non-speech line
+but then if the user says &lt;@ownuserid|daltonwu&gt; something something
+it looks like the user automatically says it upon entering a channel
+oh it's complicated
+um
+yes that's what I'm thinking about
+is it a special user
+what about the user
+it's a message because it shows up in the message feed
+smh slack
+how is that a message
+yes type == 'message'
+oh what
+no, I do check type
+type would equal message
+oh you can check type
+I can filter out the messages from slack
+wait, probably Slack says it
+yeah you cant tell
+lol
+LOL
+so we probably would be ok not including it
+no, if I say it, then it's proper speech
+its still not proper speech
+or maybe not
+they both end up looking the same
+however, I can also literally type the same thing here
+when a user oins the channel, that's the way it shows up when I grab the history
+no, I mean
+then dont write it into the file
+cant you ust say if string[:9] == &lt;@USER_ID|
+I'm being almost unintelligible rn
+idk how to distinguish -_-
+but if you literally type that
+&lt;@USER_ID|USERNAME&gt;
+when user oins the channel
+although there's a problem
+alright
+no, I'm using regex
+or you could put it in a text editor and ust replace with that lol
+the files are small
+there arent even that many
+you could probably ust do it manually
+I'm doing it now
+regex?
+what built in
+Nah you can ust use some built in methods to ust read in the file and remove instances of unwanted stuff too.  Oh I guess I can do it 
+how are you going to code
+oh, no felicity
+(Sorry I haven't been doing ack poops. I don't have access to computer this weekend)
+Or check to see if there's a certain tag those messages have
+If statements?
+Maybe  can look into removing those from the output?
+&lt;!channel&gt;: instead of @channel:
+&lt;https&gt; tags instead of the link
+like user left/oined channel
+the output contains some stuff we might not want, though
+okay, I've got the history saving now
+lol
+make history
+and then I was thinking my code would run if you type
+do we need a Makefile
+Actually not really it can be useful
+Yeah when you read it in from a file there's a new line. It's dumb 
+ty
+???? D:&lt;
+fixed it
+you have to take out the new line in the token
+oh got it
+im so confused
+are you alive
+roy
+:thumbsup::skin-tone-6:
+ust the first function
+yeah
+I pushed my code, could you go over it please?
+lol
+invalid auth
+or make your own bot
+smh
+oh ust use the bot's token
+re-issued my token, but still not working
+guys, are your tokens in the format of xoxp then three numbers then hex?
+D:&lt;
+wth slack is reecting my perfectly valid token
+you can do commands like //markov talk like random
+lol
+oh sweet
+softdev bot will be better
+random bot will be dumb
+CHANNEL_NAME_history.txt
+so like it will mimic the general style of channel
+yes that is what I am doing
+we should do &lt;channel-name&gt;.txt
+"you are what you eat"
+methinks
+LOL okay so sometimes it'll be a dumb bot
+and stuff
+this way we can have shakespearebot
+which txt to read in
+I'll back up as many channels as is reasonable and then have the markovbot pick
+if you use random
+it'll be a really dumb bot
+like the bot would ust say weird things
+ikr
+wait but wouldn't it be like a dumb bot if you use the text from random
+oh, doesn't matter I'll generate both
+oh, I thought we were doing random first
+k
+probably
+ohh okay yeah ust pull from general
+do we even have that many -_-
+and I think 1000 messages will do it
+pulling more means the bot more closely approximates the channel
+pulling more doesn't mean the bot becomes more coherent
+oh lol we can ust pull more if the bot is incoherent
+what dya think
+or else I have to do some extra code
+yes
+oh the max is 1000 at one time?
+?
+whats the difference between pulling 10,000 though
+does that sound like it's enough -_-
+I'm feeling kinda lazy so I'll only pull up to 1000 messages instead of all of them
+okay guys
+then yeah ust get rid of flask
+oh also pip install requests
+lol
+no...
+for the class?
+?
+uhh idk do we have to use flask&gt;
+i think ust pip install websocket-client
+and also why is flask there
+to run app.py?
+what do we need to pip install
+oh yeah roy
+nah we can use it to turn on and off the bot in channels
+I think we'll use it ust once -__-
+yeah would be useful
+well, now I'm writing a function for getting channel id using channel name
+lol kk
+nvm, then
+and i print all reults
+yeah that makes sense
+okay
+slack sends back the channel id when you message
+console
+how did you get the id for #markov-bot-testing?
+oh no i ust messaged the channel and checked the console
+no, your code for getting the channel id
+the username method
+I can't find it -_-
+since you've already written it
+where's your code loop
+https://api.slack.com/methods/channels.list
+dalton i think you can do the same thing i did with the userid. use channel.list and loop through until you find a match
+oh ok
+i was ust messaging the channel and looking at the son sent back
+oh and yeah got it yicheng. ust wanted to have channel restriction so it doesnt spam everyone on slack
+can you like check the id using slack online
+I'm doing it using api
+do you have a way to get channel id
+oh
+yeah, I'm using your code
+thats the markov-bot-testing channel
+I added Python code for making and adding files but didn't do anything with the API
+k
+: i'll fix backend like tomorrow
+only pull request when it's like "releasable"
+roy don't pull request that frequently
+: I see channel G0EHE something. Which channel is that?
+Do we have some util for grabbing channel id?
+Felicity?
+what files thing?
+So did you?
+oh
+thats the bots token
+?
+Dalton, you used my files thing for Python?
+that's your token
+royxu uploaded a file: https://stuycs.slack.com/files/royxu/F0EHEB5E3/token.txt|token.txt
+test
+uhh sure
+shall we make a special channel for the markov bot spam testing? It's getting crowded in here
+yeah copy it. thats fine
+oh yeah ust make a utils.py
+KING lashes out at the boat.
+: can you fix the space before a period thing?
+CAMERA TRACKS TO: a Figure lies .
+g
+Factories! We see Sam...Merry...
+what
+EXT. BUCKLEBERRY FERRY -- NIGHT .
+(you'll see)
+: should we make a utils for the connection stuff, because I'm copying your code in some places
+: I'm editing our code rn, so don't edit at the same time
+k
+Oh yeah I'll go do that 
+: why is your token in the actual code? I thought we are saving our own tokens in token.txt and ust reading the token from there
+-_-
+2 lazy
+but you can ust edit the channel name in the code
+don't we ust use the history like your fellowship thing
+save a config file
+no we're not
+we aren't running this every time, though
+prompt the user for slack team and slack channel
+erm prompt the user
+or should I grab every channel as a separate file ust to save it
+yeah that's good
+yeah make a txt
+history.txt
+I'll make it a txt
+which channel
+and store it in a file
+yes
+write something that would grab the chat history
+good
+I'm actually doing work now
+you mean, humans speak to you?
+hello guys
+speak to me
+//markov speak to ohnny so
+//markov speak to Roy Xu
+//markov speak to Roy Xu
+//markov speak to Roy Xu
+//markov speak to ohnny so
+(to the hobbits) .
+hi
+//markov speak to ohnny so
+MarkovBot spoke to me at 11:08
+Bot*
+Alcoholic slack it
+I think I'll ust have myself another .
+hi
+//markov speak to Alvin Lin
+//markov speak to Kevin Yan
+INT. BALIN'S TOMB, MORIA -- DAY .
+//markov speak to Kevin Yan
+Deafening roar! .
+//markov speak to Kevin Yan
+Lodgings with a look of dawning horror.
+//markov speak to Kevin Yan
+Hobbits really are amazing .
+//markov speak to Kevin Yan
+Gandalf looming over him.
+//markov speak to Kevin Yan
+Sam flying. Merry and Pippin, overcome with terror, .
+//markov speak to Kevin Yan
+//markov speak to me
+speak to Kevin Yan
+speak to Felicity Ng
+User not Found
+speak to Felicity Ng
+User not Found
+speak to Felicity Ng
+Abyss! Frodo cries .
+hello
+speak to Felicity Ng
+speak to me
+speak to Felicity Ng
+speak to me
+Gandalf! We must move on, we cannot linger.
+oops
+that's not the point of pull requests lol
+*pull requests
+do not approve your own merge requests
+GOD DAMMIT PEOPLE
+speak to me
+speak to me
+Wingnut Films Production .
+hi
+speak to me
+Goblin skeletons are .
+speak to me
+ON: ISILDUR picks up the call .
+test
+ECHO OF BOROMIR'S HORN reaches Aragorn, Legolas, and .
+wow
+Waterfall. Frodo looks up as Aragorn towers over him.
+hi
+"Sauron...if we act quickly."
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+hi
+Lol
+idk what happened
+oh he tried to implement my get_sentence function
+I wonder what made it crash :o
+lol
+Fk-ing hate this class
+roy will fix it later
+markovbot crashed
+paying attention i see
+lol
+In Neurobio
+oh
+I'm on phone
+where the heck are you lol
+Markovbot not responding?
+i am in 301
+How are we always on at the same time? Lol
+does it work now?
+Holá
+hi
+hi
+sadasd
+hi
+rewfssdfs
+hi
+hsadsad
+hsdasd
+hi
+hi
+hi
+LOL
+hi
+Wow. Nice hard code
+hi
+MEOW
+hi
+No! MEOW
+hi
+Meow
+hi
+hi
+hi
+Felicity?
+hi
+?
+hi
+hi
+hi
+hi
+hi
+markovbot has oined the group
+T^T
+Okay TT
+then google!
+I don't think I can bring my computer to school easily D;
+Oh god
+b/c a lot of things can be causing that
+erm i need to see your comp
+How do I make Ubuntu save my changes? Or am I stuck with redownloading everything every time I use Ubuntu?
+yeech uploaded a file: https://stuycs.slack.com/files/yeech/F0EE5DSG5/even_set_up_a_reminder_for_you.png|even set up a reminder for you.png and commented: I was about to review your pull request lol
+: bffl, help me? c:
+I'm not sure how to use the URL/code stuff
+ROYY
+Could someone hold my hand and walk me through API stuff?
+Okay. Sorry lol
+idk but it was a merge request lol
+Or ust the message history branch?
+Did the merge request merge with master?
+that defeats the purpose of a merge request
+felicity don't approve your own merge request lol
+I think I got the file writing to work. I'm not sure how to do the API stuff :confused:
+everythings back to normal
+sorry about that
+i am lord yeech
+yes
+that's actually pretty good
+Boromir scoops him up and looks around quickly.
+LOCAL HOBBITS, and a half eaten pork pie in his hands.
+By foul craft, Saruman has crossed Orc.
+generated lotr
+lol markov
+https://api.slack.com/methods/channels.history
+Markov*
+k
+that leaves dalton and felicity to do 1
+ill take 3
+1 probably needs 2 people
+Felicity is taking 1
+I'll take 2 about Markoff Chain
+TODO List:
+1. Get/store messages using API
+2. Get Markoff Chain
+3. Sending messages to channels
+¯\_(ツ)_/¯
+why?
+¯\_(ツ)_/¯
+why?
+felicitypictures has oined the group
+daltonwu has oined the group
+yeech has oined the group
+royxu has oined the group
