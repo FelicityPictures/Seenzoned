@@ -13,13 +13,13 @@ Seenzoned creates a bot called MarkovBot, who will learn speech patterns in a Sl
 | *app.py -d*                                     | run MarkovBot with debug statements                                     |
 | **Running MarkovBot**                           |                                                                         |
 | *//markov*                                      | MarkovBot will talk like how people talk in this channel                |
-| *//markov speak like <channel>*                 | MarkovBot will speak like a channel if possible, or speak like softdev  |
+| *//markov speak like \<channel\>*               | MarkovBot will speak like a channel if possible, or speak like softdev  |
 | *//markov speak to me*                          | MarkovBot will message you                                              |
-| *//markov speak to <name>*                      | MarkovBot will message the person with specificed name                  |
-| *//markov help or //markov <invalid command>*   | MarkovBot will print this string"""                                     |
+| *//markov speak to \<name\>*                    | MarkovBot will message the person with specificed name                  |
 
 ## Prerequisites
 - Slack account
+- token.txt containing your token for Slack API obtainable at https://api.slack.com/web
 - Installation of Python's requests library
 ```bash
 pip install requests
