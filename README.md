@@ -4,7 +4,19 @@ API project for Software Development class (pd 6: Felicity Ng, Yicheng Wang, Dal
 ## Description
 Seenzoned creates a bot called MarkovBot, who will learn speech patterns in a Slack channel and imitate it.
 
+## Prerequisites
+- Slack account
+- Installation of Python's requests library
+```bash
+pip install requests
+```
+- Installation of Python's websocket-client library
+```bash
+pip install websocket-client
+```
+
 ## Instructions
+Creat a token.txt file containing your token for the Slack API (obtainable at https://api.slack.com/web)
 
 | Command                                         | Result                                                                  |
 |-------------------------------------------------|-------------------------------------------------------------------------|
@@ -16,15 +28,3 @@ Seenzoned creates a bot called MarkovBot, who will learn speech patterns in a Sl
 | *//markov speak like \<channel\>*               | MarkovBot will speak like a channel if possible, or speak like softdev  |
 | *//markov speak to me*                          | MarkovBot will message you                                              |
 | *//markov speak to \<name\>*                    | MarkovBot will message the person with specificed name                  |
-
-## Prerequisites
-- Slack account
-- token.txt containing your token for Slack API obtainable at https://api.slack.com/web
-- Installation of Python's requests library
-```bash
-pip install requests
-```
-- Installation of Python's websocket-client library
-```bash
-pip install websocket-client
-```
