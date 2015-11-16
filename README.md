@@ -8,10 +8,10 @@ Seenzoned creates a bot called MarkovBot, who will learn speech patterns in a Sl
 
 | Command                                         | Result                                                                  |
 |-------------------------------------------------|-------------------------------------------------------------------------|
-| Starting MarkovBot                              |                                                                         |
+| **Starting MarkovBot**                          |                                                                         |
 | *app.py*                                        | run MarkovBot without debug statements                                  |
 | *app.py -d*                                     | run MarkovBot with debug statements                                     |
-| Running MarkovBot                               |                                                                         |
+| **Running MarkovBot**                           |                                                                         |
 | *//markov*                                      | MarkovBot will talk like how people talk in this channel                |
 | *//markov speak like <channel>*                 | MarkovBot will speak like a channel if possible, or speak like softdev  |
 | *//markov speak to me*                          | MarkovBot will message you                                              |
