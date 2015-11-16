@@ -10,7 +10,7 @@ import markov
 from sys import argv
 from messages import *
 
-token = "xoxb-14526704643-twywi1tueSBhidtlaLb3sR0M" #token for markovbot in stuycs slack
+token = open('token.txt','r').read()[:-1] #token for markovbot in stuycs slack
 DEBUG = False
 HELP_STR = """Commands:
 //markov: markov bot will talk like how people talk in this channel
