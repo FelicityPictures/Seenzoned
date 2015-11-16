@@ -4,14 +4,19 @@ API project for Software Development class (pd 6: Felicity Ng, Yicheng Wang, Dal
 ## Description
 Seenzoned creates a bot called MarkovBot, who will learn speech patterns in a Slack channel and imitate it.
 
-## Commands
+## Instructions
+
 | Command                                         | Result                                                                  |
 |-------------------------------------------------|-------------------------------------------------------------------------|
-| *//markov*                                      | markovBot will talk like how people talk in this channel                |
-| *//markov speak like <channel>*                 | markovBot will speak like a channel if possible, or speak like softdev  |
-| *//markov speak to me*                          | markovBot will message you                                              |
-| *//markov speak to <name>*                      | markovBot will message the person with specificed name                  |
-| *//markov help or //markov <invalid command>*   | markovBot will print this string"""                                     |
+| Starting MarkovBot                              |                                                                         |
+| *app.py*                                        | run MarkovBot without debug statements                                  |
+| *app.py -d*                                     | run MarkovBot with debug statements                                     |
+| Running MarkovBot                               |                                                                         |
+| *//markov*                                      | MarkovBot will talk like how people talk in this channel                |
+| *//markov speak like <channel>*                 | MarkovBot will speak like a channel if possible, or speak like softdev  |
+| *//markov speak to me*                          | MarkovBot will message you                                              |
+| *//markov speak to <name>*                      | MarkovBot will message the person with specificed name                  |
+| *//markov help or //markov <invalid command>*   | MarkovBot will print this string"""                                     |
 
 ## Prerequisites
 - Slack account
